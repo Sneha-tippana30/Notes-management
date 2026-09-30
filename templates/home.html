@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Notes</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+        }
+
+        .note {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px gray;
+        }
+
+        .category {
+            color: #007bff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .answer {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .update-btn {
+            background-color: orange;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="container">
+
+        {% for note in notes %}
+
+        <div class="note">
+
+            <div class="category">
+                Category: {{ note.category }}
+            </div>
+
+            <p class="question">
+                Question: {{ note.question }}
+            </p>
+
+            <p class="answer">
+                Answer: {{ note.answer }}
+            </p>
+
+            <a href="{% url 'update' note.id %}" class="update-btn">
+            <i class="fa-solid fa-pencil"></i>
+                Update
+            </a>
+
+            <a href="{% url 'delete' note.id %}" class="delete-btn">
+            <i class="fa-solid fa-trash"></i>
+                Delete
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

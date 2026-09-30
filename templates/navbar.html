@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <meta charset="UTF-8">
+
+    <style>
+
+        .shop-navbar {
+            background-color: #333;
+            padding: 15px 30px;
+        }
+
+        .navbar-container {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .shop-logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-menu li {
+            margin-left: 25px;
+        }
+
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .navbar-menu a:hover {
+            color: #00bfff;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .add-note {
+            background-color: green;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .add-note:hover {
+            background-color: darkgreen;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="shop-navbar">
+
+        <div class="navbar-container">
+
+            <!-- Logo -->
+
+            <a href="{% url 'home' %}" class="shop-logo">
+                
+                Brain space <br>
+                <i class="fa-solid fa-brain"></i>
+            </a>
+
+
+            <!-- Navigation Links -->
+
+            <ul class="navbar-menu">
+
+                <li>
+                    <a href="{% url 'home' %}">
+                        <i class="fa-solid fa-house"></i>
+                         Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'python' %}">
+                    <i class="fa-brands fa-python"></i>
+
+                        Python      
+                </li>
+
+                <li>
+                    <a href="{% url 'django' %}">
+                    <i class="fa-solid fa-eye"></i>
+                        Django
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'sql' %}">
+                    <i class="fa-solid fa-database"></i>
+                        SQL
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'frontend' %}">
+                    <i class="fa-brands fa-html5"></i>
+
+                        Frontend
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'aiml' %}">
+                    <i class="fa-solid fa-robot"></i>
+
+                    
+                        Aiml
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- Add Note -->
+
+            <div class="navbar-actions">
+
+                <a href="{% url 'addnote' %}" class="add-note">
+                <i class="fa-solid fa-book-open"></i>
+
+                    Add Note
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+</body>
+
+</html>

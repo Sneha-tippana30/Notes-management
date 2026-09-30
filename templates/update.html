@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Update Note</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px gray;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkorange;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+
+    <div class="container">
+
+        <h1>Update Note</h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <label>Category</label>
+
+            <select name="category" required>
+
+                <option value="Python"
+                    {% if note.category == "Python" %}selected{% endif %}>
+                    Python
+                </option>
+
+                <option value="Django"
+                    {% if note.category == "Django" %}selected{% endif %}>
+                    Django
+                </option>
+
+                <option value="SQL"
+                    {% if note.category == "SQL" %}selected{% endif %}>
+                    SQL
+                </option>
+
+                <option value="Frontend"
+                    {% if note.category == "Frontend" %}selected{% endif %}>
+                    Frontend
+                </option>
+
+                <option value="Data Analyst"
+                    {% if note.category == "Data Analyst" %}selected{% endif %}>
+                    Data Analyst
+                </option>
+
+            </select>
+
+
+            <label>Question</label>
+
+            <textarea
+                name="question"
+                required>{{ note.question }}</textarea>
+
+
+            <label>Answer</label>
+
+            <textarea
+                name="answer"
+                required>{{ note.answer }}</textarea>
+
+
+            <button type="submit">
+                Update Note
+            </button>
+
+        </form>
+
+
+        <a href="{% url 'home' %}" class="back">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</body>
+
+</html>

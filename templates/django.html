@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Django - My Notes</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .note {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px gray;
+        }
+
+        .category {
+            color: #007bff;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .answer {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .back-btn:hover {
+            background-color: #555;
+        }
+
+        .no-notes {
+            text-align: center;
+            color: #777;
+            font-size: 18px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="container">
+
+        <h1>Django Notes</h1>
+
+        {% for note in notes %}
+
+        <div class="note">
+
+            <div class="category">
+                {{ note.category }}
+            </div>
+
+            <p class="question">
+                Question: {{ note.question }}
+            </p>
+
+            <p class="answer">
+                Answer: {{ note.answer }}
+            </p>
+
+        </div>
+
+        {% empty %}
+
+        <p class="no-notes">
+            No Django notes available.
+        </p>
+
+        {% endfor %}
+
+        <a href="{% url 'home' %}" class="back-btn">
+            Back to Home
+        </a>
+
+    </div>
+
+</body>
+
+</html>

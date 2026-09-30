@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Note</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ebefed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px gray;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2b2828;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            box-sizing: border-box;
+            border: 1px solid #2d2b2b;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+
+    <div class="container">
+
+        <h1>Add Note
+            <i class="fa-solid fa-circle-plus"></i>
+
+        </h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <label>Category
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+
+            <select name="category" required>
+
+                <option value="">Select Category</option>
+
+                <option value="Python">
+                    Python
+                </option>
+
+                <option value="Django">
+                    Django
+                </option>
+
+                <option value="SQL">
+                    SQL
+                </option>
+
+                <option value="Frontend">
+                    Frontend
+                </option>
+
+                <option value="aiml">
+                   aiml
+                </option>
+
+            </select>
+
+
+            <label>Question
+                <i class="fa-solid fa-question"></i>
+            </label>
+
+            <textarea
+                name="question"
+                placeholder="Enter your question"
+                required></textarea>
+
+
+            <label>Answer
+            <i class="fa-solid fa-layer-group"></i>
+            </label>
+
+            <textarea
+                name="answer"
+                placeholder="Enter your answer"
+                required></textarea>
+
+
+            <button type="submit">
+                Add Note
+                <i class="fa-regular fa-square-plus"></i>
+            </button>
+
+        </form>
+
+
+        <a href="{% url 'home' %}" class="back">
+        
+            ← Back to Home
+            <i class="fa-solid fa-house"></i>
+        </a>
+
+    </div>
+
+</body>
+
+</html>
